@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <title>External Website Monitoring</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0b1220;--panel:#111c2e;--line:#26364d;--muted:#9aabc1;--text:#edf4ff;--green:#27c281;--amber:#f4b740;--red:#f16b70;--gray:#91a0b5}
+    *{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#0b1220,#101b2d);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+    .wrap{max-width:1240px;margin:auto;padding:28px 20px 48px}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+    h1{font-size:clamp(24px,4vw,34px);margin:0 0 6px}.sub,.muted{color:var(--muted)}.sub{margin:0}
+    .pill{border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:var(--muted);font-size:13px}
+    .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:26px 0}
+    .card,.panel{background:rgba(17,28,46,.94);border:1px solid var(--line);border-radius:16px}
+    .card{padding:18px}.card .label{color:var(--muted);font-size:13px}.num{font-size:34px;font-weight:750;margin-top:5px}
+    .up{color:var(--green)}.degraded{color:var(--amber)}.down{color:var(--red)}.unknown{color:var(--gray)}
+    .panel{overflow:hidden}.panel-head{padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+    h2{font-size:18px;margin:0}.tools{display:flex;gap:10px;flex-wrap:wrap}input,select{background:#0b1525;border:1px solid var(--line);color:var(--text);padding:10px 12px;border-radius:9px;font:inherit}
+    input{min-width:220px}button{background:#203754;color:var(--text);border:1px solid #385273;border-radius:9px;padding:10px 14px;font:inherit;cursor:pointer}
+    .table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:850px}th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+    th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:#101a2a}td{font-size:13px}
+    tr:last-child td{border-bottom:0}.site a{color:#dceaff;text-decoration:none;font-weight:650}.site a:hover{text-decoration:underline}
+    .status{display:inline-flex;align-items:center;gap:7px;font-weight:700;white-space:nowrap}.dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .detail{max-width:330px;color:var(--muted);overflow-wrap:anywhere}.footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:15px 20px;color:var(--muted);font-size:12px}
+    .notice{padding:18px 20px;color:var(--muted)}.error{color:var(--red)}
+    @media(max-width:720px){.wrap{padding:20px 12px 36px}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{padding:14px}.num{font-size:29px}.panel-head{padding:15px}.tools{width:100%}input{min-width:0;flex:1;width:100%}}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <div><h1>External Website Monitoring</h1><p class="sub">External availability overview · India probe</p></div>
+    <div class="pill" id="updated">Waiting for dashboard data…</div>
+  </header>
+  <section class="cards" aria-label="Website status summary">
+    <article class="card"><div class="label">Total websites</div><div class="num" id="total">—</div></article>
+    <article class="card"><div class="label">UP</div><div class="num up" id="up">—</div></article>
+    <article class="card"><div class="label">DEGRADED</div><div class="num degraded" id="degraded">—</div></article>
+    <article class="card"><div class="label">DOWN</div><div class="num down" id="down">—</div></article>
+  </section>
+  <section class="panel">
+    <div class="panel-head"><h2>Website status</h2><div class="tools">
+      <input id="search" type="search" placeholder="Search websites…" aria-label="Search websites">
+      <select id="filter" aria-label="Filter by status"><option value="ALL">All statuses</option><option>UP</option><option>DEGRADED</option><option>DOWN</option><option>UNKNOWN</option></select>
+      <button id="refresh" type="button">Refresh</button>
+    </div></div>
+    <div id="message" class="notice">Loading monitoring data…</div>
+    <div class="table-wrap"><table hidden id="table">
+      <thead><tr><th>Website</th><th>Status</th><th>HTTP</th><th>Protocol</th><th>Probe</th><th>Last check (IST)</th><th>Details</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table></div>
+    <div class="footer"><span>Refreshes automatically every 60 seconds</span><span>Data is published from the monitoring system</span></div>
+  </section>
+  <p class="muted" style="font-size:12px;margin:16px 2px">This dashboard reports external HTTP reachability. It does not guarantee that every application function is working.</p>
+</main>
+<script>
+const dataUrl = "./status.json";
+const $ = id => document.getElementById(id);
+let sites = [];
+function escapeHtml(value){return String(value??"—").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function localTime(value){
+  if(!value)return "Not checked";
+  const d=new Date(value); if(Number.isNaN(d.getTime()))return "Unavailable";
+  return new Intl.DateTimeFormat("en-IN",{timeZone:"Asia/Kolkata",day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:true}).format(d)+" IST";
+}
+function render(){
+  const counts={UP:0,DEGRADED:0,DOWN:0,UNKNOWN:0};
+  sites.forEach(s=>{const st=counts[s.status]===undefined?"UNKNOWN":s.status;counts[st]++;});
+  $("total").textContent=sites.length;$("up").textContent=counts.UP;$("degraded").textContent=counts.DEGRADED;$("down").textContent=counts.DOWN;
+  const q=$("search").value.toLowerCase(),f=$("filter").value;
+  const shown=sites.filter(s=>(f==="ALL"||s.status===f)&&(!q||s.name.toLowerCase().includes(q)||s.url.toLowerCase().includes(q)));
+  $("rows").innerHTML=shown.map(s=>{
+    const st=["UP","DEGRADED","DOWN"].includes(s.status)?s.status:"UNKNOWN";
+    const code=s.http_status==null?"—":"HTTP "+s.http_status;
+    return "<tr><td class='site'><a href='"+escapeHtml(s.url)+"' target='_blank' rel='noopener noreferrer'>"+escapeHtml(s.name)+"</a><br><span class='muted'>"+escapeHtml(s.url)+"</span></td><td><span class='status "+st.toLowerCase()+"'><i class='dot'></i>"+st+"</span></td><td>"+escapeHtml(code)+"</td><td>"+escapeHtml(s.protocol)+"</td><td>"+escapeHtml(s.location)+"</td><td>"+escapeHtml(localTime(s.last_check))+"</td><td class='detail'>"+escapeHtml(s.details)+"</td></tr>";
+  }).join("");
+  $("table").hidden=false;$("message").hidden=shown.length>0;
+  if(!shown.length)$("message").textContent="No websites match your search or filter.";
+}
+async function load(){
+  $("refresh").disabled=true;
+  try{
+    const response=await fetch(dataUrl+"?t="+Date.now(),{cache:"no-store"});
+    if(!response.ok)throw new Error("Dashboard data not published yet (HTTP "+response.status+").");
+    const payload=await response.json();
+    if(!Array.isArray(payload.sites))throw new Error("The status data format is invalid.");
+    sites=payload.sites;
+    $("updated").textContent="Data generated: "+localTime(payload.generated_at);
+    $("message").hidden=true;render();
+  }catch(e){$("message").hidden=false;$("message").innerHTML="<span class='error'>"+escapeHtml(e.message)+"</span>";}
+  finally{$("refresh").disabled=false;}
+}
+$("search").addEventListener("input",render);$("filter").addEventListener("change",render);$("refresh").addEventListener("click",load);
+load();setInterval(load,60000);
+</script>
+</body>
+</html>
