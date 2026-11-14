@@ -1,35 +1,35 @@
 {
-  "generated_at": "2026-11-14T04:59:53.632034+00:00",
+  "generated_at": "2026-11-14T11:26:18.454075+00:00",
   "sites": [
     {
       "name": "EWayBill",
       "url": "https://ewaybillgst.gov.in",
-      "status": "DOWN",
-      "http_status": null,
-      "protocol": "HTTPS + HTTP",
+      "status": "DEGRADED",
+      "http_status": 302,
+      "protocol": "HTTP",
       "location": "Mumbai",
-      "last_check": "2026-11-14T04:10:39.967601+00:00",
-      "details": "HTTPS: The measurement timed out.; HTTP: The measurement timed out."
+      "last_check": "2026-11-14T11:24:13.475245+00:00",
+      "details": "HTTP 302 (HTTP works, HTTPS failed)"
     },
     {
       "name": "Docs",
       "url": "https://docs.ewaybillgst.gov.in",
       "status": "DEGRADED",
       "http_status": 403,
-      "protocol": "HTTP",
+      "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-14T04:57:47.190349+00:00",
-      "details": "HTTP 403 (HTTP works, HTTPS failed)"
+      "last_check": "2026-11-14T11:24:15.418240+00:00",
+      "details": "HTTP 403 (unexpected; expected 200)"
     },
     {
       "name": "MIS",
       "url": "https://mis.ewaybillgst.gov.in",
-      "status": "DEGRADED",
-      "http_status": 302,
-      "protocol": "HTTP",
+      "status": "UP",
+      "http_status": 200,
+      "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-14T04:58:09.799217+00:00",
-      "details": "HTTP 302 (HTTP works, HTTPS failed)"
+      "last_check": "2026-11-14T11:24:16.721523+00:00",
+      "details": "HTTP 200 (expected response)"
     },
     {
       "name": "Dashboard",
@@ -38,7 +38,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-14T04:58:11.701940+00:00",
+      "last_check": "2026-11-14T11:24:18.728210+00:00",
       "details": "HTTP 200 (expected response)"
     },
     {
@@ -78,7 +78,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-14T04:58:42.319839+00:00",
+      "last_check": "2026-11-14T11:24:34.369277+00:00",
       "details": "HTTP 200 (expected response)"
     },
     {
@@ -88,7 +88,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-14T04:58:43.857416+00:00",
+      "last_check": "2026-11-14T11:24:35.593632+00:00",
       "details": "HTTP 200 (expected response)"
     },
     {
@@ -108,7 +108,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-14T04:58:45.986031+00:00",
+      "last_check": "2026-11-14T11:25:04.883740+00:00",
       "details": "HTTP 200 (expected response)"
     },
     {
@@ -118,7 +118,7 @@
       "http_status": 302,
       "protocol": "HTTP",
       "location": "Mumbai",
-      "last_check": "2026-11-14T04:59:08.075372+00:00",
+      "last_check": "2026-11-14T11:25:27.021599+00:00",
       "details": "HTTP 302 (HTTP works, HTTPS failed)"
     },
     {
@@ -128,7 +128,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-14T04:59:09.727194+00:00",
+      "last_check": "2026-11-14T11:25:28.331869+00:00",
       "details": "HTTP 200 (expected response)"
     },
     {
@@ -138,28 +138,28 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-14T04:59:11.095006+00:00",
+      "last_check": "2026-11-14T11:25:29.787947+00:00",
       "details": "HTTP 200 (expected response)"
     },
     {
       "name": "EWB2Sandbox",
       "url": "https://ewb2api.gstsandbox.nic.in",
-      "status": "UP",
-      "http_status": 200,
-      "protocol": "HTTPS",
+      "status": "DEGRADED",
+      "http_status": null,
+      "protocol": "HTTPS + HTTP",
       "location": "Mumbai",
-      "last_check": "2026-11-14T04:59:12.214564+00:00",
-      "details": "HTTP 200 (expected response)"
+      "last_check": "2026-11-14T11:26:11.211194+00:00",
+      "details": "HTTPS: The measurement timed out.; HTTP: The measurement timed out."
     },
     {
       "name": "EINV1Sandbox",
       "url": "https://einv1api.gstsandbox.nic.in",
-      "status": "DOWN",
-      "http_status": null,
-      "protocol": "HTTPS + HTTP",
+      "status": "UP",
+      "http_status": 200,
+      "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-14T04:59:49.079670+00:00",
-      "details": "HTTPS: The measurement timed out.; HTTP: Request timed out while establishing the TCP connection."
+      "last_check": "2026-11-14T11:26:13.193897+00:00",
+      "details": "HTTP 200 (expected response)"
     },
     {
       "name": "EINV2Sandbox",
@@ -168,7 +168,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-14T04:59:50.418484+00:00",
+      "last_check": "2026-11-14T11:26:14.937083+00:00",
       "details": "HTTP 200 (expected response)"
     },
     {
@@ -178,7 +178,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-14T04:59:51.633367+00:00",
+      "last_check": "2026-11-14T11:26:16.280180+00:00",
       "details": "HTTP 200 (expected response)"
     }
   ]
