@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T08:38:08.129600+00:00",
+  "generated_at": "2026-11-25T09:08:07.704360+00:00",
   "sites": [
     {
       "name": "EWayBill",
@@ -8,7 +8,7 @@
       "http_status": 302,
       "protocol": "HTTP",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:37:41.532163+00:00",
+      "last_check": "2026-11-25T09:07:41.658294+00:00",
       "details": "HTTP 302 (redirect accepted) (HTTPS probe issue: Response does not match the HTTP/1.1 protocol (Invalid header token))"
     },
     {
@@ -18,18 +18,18 @@
       "http_status": 403,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:37:42.759942+00:00",
+      "last_check": "2026-11-25T09:07:42.869222+00:00",
       "details": "HTTP 403 (access denied to probe; endpoint considered reachable)"
     },
     {
       "name": "MIS",
       "url": "https://mis.ewaybillgst.gov.in",
       "status": "UP",
-      "http_status": 200,
-      "protocol": "HTTPS",
+      "http_status": 302,
+      "protocol": "HTTP",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:37:43.995392+00:00",
-      "details": "HTTP 200 (successful HTTP response)"
+      "last_check": "2026-11-25T09:07:45.179265+00:00",
+      "details": "HTTP 302 (redirect accepted) (HTTPS probe issue: read ECONNRESET)"
     },
     {
       "name": "Dashboard",
@@ -38,7 +38,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:37:45.354271+00:00",
+      "last_check": "2026-11-25T09:07:46.407649+00:00",
       "details": "HTTP 200 (successful HTTP response)"
     },
     {
@@ -48,7 +48,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:37:46.702752+00:00",
+      "last_check": "2026-11-25T09:07:47.755289+00:00",
       "details": "HTTP 200 (successful HTTP response)"
     },
     {
@@ -58,7 +58,7 @@
       "http_status": 302,
       "protocol": "HTTP",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:37:49.151534+00:00",
+      "last_check": "2026-11-25T09:07:50.185124+00:00",
       "details": "HTTP 302 (redirect accepted) (HTTPS probe issue: Response does not match the HTTP/1.1 protocol (Invalid header token))"
     },
     {
@@ -68,7 +68,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:37:50.508172+00:00",
+      "last_check": "2026-11-25T09:07:51.525893+00:00",
       "details": "HTTP 200 (successful HTTP response)"
     },
     {
@@ -78,7 +78,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:37:51.733026+00:00",
+      "last_check": "2026-11-25T09:07:52.739280+00:00",
       "details": "HTTP 200 (successful HTTP response)"
     },
     {
@@ -88,7 +88,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:37:52.965334+00:00",
+      "last_check": "2026-11-25T09:07:53.987055+00:00",
       "details": "HTTP 200 (successful HTTP response)"
     },
     {
@@ -98,7 +98,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:37:54.195869+00:00",
+      "last_check": "2026-11-25T09:07:55.202641+00:00",
       "details": "HTTP 200 (successful HTTP response)"
     },
     {
@@ -108,7 +108,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:37:56.342370+00:00",
+      "last_check": "2026-11-25T09:07:56.544434+00:00",
       "details": "HTTP 200 (successful HTTP response)"
     },
     {
@@ -118,7 +118,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:37:57.692832+00:00",
+      "last_check": "2026-11-25T09:07:57.757167+00:00",
       "details": "HTTP 200 (successful HTTP response)"
     },
     {
@@ -128,7 +128,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:37:59.040867+00:00",
+      "last_check": "2026-11-25T09:07:59.097535+00:00",
       "details": "HTTP 200 (successful HTTP response)"
     },
     {
@@ -138,7 +138,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:38:00.268839+00:00",
+      "last_check": "2026-11-25T09:08:00.310792+00:00",
       "details": "HTTP 200 (successful HTTP response)"
     },
     {
@@ -148,7 +148,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:38:01.495996+00:00",
+      "last_check": "2026-11-25T09:08:01.531558+00:00",
       "details": "HTTP 200 (successful HTTP response)"
     },
     {
@@ -158,7 +158,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:38:02.726095+00:00",
+      "last_check": "2026-11-25T09:08:02.747479+00:00",
       "details": "HTTP 200 (successful HTTP response)"
     },
     {
@@ -168,7 +168,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:38:03.953898+00:00",
+      "last_check": "2026-11-25T09:08:03.834585+00:00",
       "details": "HTTP 200 (successful HTTP response)"
     },
     {
@@ -178,7 +178,7 @@
       "http_status": 200,
       "protocol": "HTTPS",
       "location": "Mumbai",
-      "last_check": "2026-11-25T08:38:05.301964+00:00",
+      "last_check": "2026-11-25T09:08:05.203847+00:00",
       "details": "HTTP 200 (successful HTTP response)"
     }
   ]
